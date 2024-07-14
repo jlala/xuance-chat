@@ -1,0 +1,24 @@
+.palace {
+  border: 1px solid #00000030;
+  display: flex;
+  flex-direction: column;
+  .stars-box {
+    display: flex;
+  }
+  .palace-major {
+    display: flex;
+    flex: 1;
+    color: var(--color-major);
+    font-weight: 500;
+  }
+  .palace-minor {
+    display: flex;
+    flex: 1;
+    color: var(--color-minor);
+  }
+  .palace-adj {
+    display: flex;
+    flex: 1;
+    color: var(--color-adj);
+  }
+}

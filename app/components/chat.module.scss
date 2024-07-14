@@ -284,12 +284,17 @@
 
 .chat-body {
   flex: 1;
+  display: flex;
   overflow: auto;
-  overflow-x: hidden;
   padding: 20px;
   padding-bottom: 40px;
   position: relative;
   overscroll-behavior: none;
+}
+
+.chat-box {
+  flex: 1;
+  overflow-x: hidden;
 }
 
 .chat-body-main-title {

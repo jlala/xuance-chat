@@ -99,6 +99,7 @@ import { ExportMessageModal } from "./exporter";
 import { getClientConfig } from "../config/client";
 import { useAllModels } from "../utils/hooks";
 import { MultimodalContent } from "../client/api";
+import { Ziwei } from "./ziwei";
 
 const Markdown = dynamic(async () => (await import("./markdown")).Markdown, {
   loading: () => <LoadingIcon />,
@@ -1305,7 +1306,6 @@ function _Chat() {
           setShowModal={setShowPromptModal}
         />
       </div>
-
       <div
         className={styles["chat-body"]}
         ref={scrollRef}
@@ -1316,6 +1316,8 @@ function _Chat() {
           setAutoScroll(false);
         }}
       >
+        <Ziwei />
+        <div className={styles["chat-box"]}>
         {messages.map((message, i) => {
           const isUser = message.role === "user";
           const isContext = i < context.length;
@@ -1497,6 +1499,7 @@ function _Chat() {
             </Fragment>
           );
         })}
+        </div>
       </div>
 
       <div className={styles["chat-input-panel"]}>
