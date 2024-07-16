@@ -1,5 +1,12 @@
 .astrolabe-theme-default {
-  --color-major: red;
+  --color-major: rgb(240, 27, 27);
   --color-minor: purple;
   --color-adj: #4a4aa4;
+}
+.star-name-lucun, .star-name-tianma{
+  color: var(--color-minor);
+  font-weight: 400;
+}
+.zg {
+  grid-area: zg;
 }

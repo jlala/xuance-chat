@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { astro } from "iztro";
 import { Palace } from "../palace";
+import { PalaceCenter } from "../palacecenter"
 import "./index.module.scss";
 import { userInfo } from "../types";
 
@@ -20,11 +21,12 @@ export function Astrolabe(props: {
 
   return (
     <>
-      {astrolabe?.palaces.map((palace) => {
+      {astrolabe?.palaces.map((palace, index) => {
         return (
-          <Palace palace={palace} />
+          <Palace astrolabe={astrolabe} palace={palace} key={index} />
         )
       })}
+      <PalaceCenter astrolabe={astrolabe} />
     </>
   )
 }
