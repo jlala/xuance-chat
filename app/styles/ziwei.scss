@@ -3,10 +3,36 @@
   --color-minor: purple;
   --color-adj: #4a4aa4;
 }
+.palace {
+  border: 1px solid #00000030;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.target {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.opposite {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.wealth, .career {
+  background-color: #fcf9d2;
+}
+
 .star-name-lucun, .star-name-tianma{
   color: var(--color-minor);
   font-weight: 400;
 }
 .zg {
   grid-area: zg;
+}
+.palace-head {
+  display: flex;
+  flex: 1;
+}
+.palace-head-en {
+  display: block !important;
+  .en {
+    writing-mode: initial;
+  }
 }

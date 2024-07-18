@@ -1,72 +1,61 @@
-.palace {
-  border: 1px solid #00000030;
+.palace-name {
+  color: rgb(253, 13, 13);
+  margin-right: 4px;
+  font-size: 15px;
+  .body-palace {
+    font-size: 12px;
+    color: var(--black);
+  }
+}
+.stars-box {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  .palace-name {
-    color: rgb(253, 13, 13);
-    margin-right: 4px;
-    font-size: 15px;
-    .body-palace {
-      font-size: 12px;
-      color: var(--black);
-    }
+}
+.palace-major {
+  
+  color: var(--color-major);
+  font-weight: 500;
+}
+.palace-minor {
+  color: var(--color-minor);
+}
+.palace-adj {
+  color: var(--color-adj);
+}
+.star-48 {
+  font-size: 10px;
+  .star-bs12 {
+    color:darkturquoise
   }
-  .stars-box {
-    display: flex;
-    justify-content: space-between;
-  }
-  .palace-major {
-    display: flex;
-    flex: 1;
-    color: var(--color-major);
-    font-weight: 500;
-  }
-  .palace-minor {
-    display: flex;
-    flex: 1;
-    color: var(--color-minor);
-  }
-  .palace-adj {
-    display: flex;
-    flex: 1;
-    color: var(--color-adj);
-  }
-  .star-48 {
-    font-size: 10px;
-    .star-bs12 {
-      color:darkturquoise
-    }
-  }
-  .hae {
-    font-size: 14px;
-  }
-  .place-ages {
-    position: absolute;
-    font-size: 10px;
-    top: -30%;
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
-  .place-decadal{
-    position: absolute;
-    display: flex;
-    font-size: 10px;
-    justify-content: center;
-    bottom: 50%;
-    left: 0;
-    right: 0;
-    color: #00000090;
-  }
-  .stars-box-footer {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    position: relative;
-  }
-  .place-footer-right {
-    display: flex;
-    align-items: end;
-  }
+}
+.hae {
+  font-size: 14px;
+}
+.place-ages {
+  position: absolute;
+  font-size: 10px;
+  top: -30%;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.place-decadal{
+  position: absolute;
+  display: flex;
+  font-size: 10px;
+  justify-content: center;
+  bottom: 50%;
+  left: 0;
+  right: 0;
+  color: #00000090;
+}
+.stars-box-footer {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  position: relative;
+}
+.place-footer-right {
+  display: flex;
+  align-items: end;
 }

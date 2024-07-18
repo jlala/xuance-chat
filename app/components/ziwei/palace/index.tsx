@@ -4,36 +4,67 @@ import FunctionalAstrolabe from "iztro/lib/astro/FunctionalAstrolabe";
 import { Star } from "../star";
 import { IPalaceProps } from "../types";
 import styles from "./index.module.scss";
+import { getLang } from "@/app/locales";
+import { useEffect, useState } from "react";
+import { fixIndex } from "iztro/lib/utils";
 
 export function Palace(props: {
   palace: IPalaceProps,
-  astrolabe: FunctionalAstrolabe
+  astrolabe: FunctionalAstrolabe,
+  focusedIndex?: number,
+  onFocused?: (index?: number) => void;
 }) {
-
+  const [surroundedPalacesOfSoul, setSurroundedPalacesOfSoul] = useState<any>({})
+  const [classes, setClasses] =  useState({
+    'palace': true,
+    'target': false,
+    'opposite': false,
+    'wealth': false,
+    'career': false,
+  })
   const handleSurroundedPalaces = () => {
-    const star = props.palace.name
-    const surroundedPalacesOfSoul = props.astrolabe.surroundedPalaces(star);
-    console.log(surroundedPalacesOfSoul)
+    props.onFocused?.(props.palace.index)
+    const palaceName = props.palace.name
+    const surroundedPalacesOfSoul = props.astrolabe.surroundedPalaces(palaceName);
+    // setSurroundedPalacesOfSoul(surroundedPalacesOfSoul)
   }
+
+  useEffect(() => {
+    const index = props.palace.index
+    const focusedIndex = props.focusedIndex
+    const indexClasses = {
+      ...classes,
+      'target': focusedIndex === index,
+      'opposite': focusedIndex !== undefined && index === fixIndex(focusedIndex + 6),
+      'wealth': focusedIndex !== undefined && (index === fixIndex(focusedIndex + 4) || index === fixIndex(focusedIndex - 4)) ,
+    }
+    
+    setClasses(indexClasses)
+  }, [props.focusedIndex])
 
   return (
     <div 
-      className={styles["palace"]}
+      className={Object.entries(classes)
+        .filter(([key, value]) => value)
+        .map(([key]) => key)
+        .join(" ")
+      }
       style={{gridArea: `g${props.palace.index}`}}
       onClick={handleSurroundedPalaces}
+      onMouseEnter={() => props.onFocused?.(props.palace.index)}
     >
       <div className={styles["stars-box"]}>
-        <div className={styles["palace-major"]}>
+        <div className={`${getLang() === 'en' ? 'palace-head-en' : 'palace-head'} ${styles["palace-major"]}`}>
           {props.palace.majorStars?.map((star, index) => (
             <Star star={star} key={index} />
           ))}
         </div>
-        <div className={styles["palace-minor"]}>
+        <div className={`${getLang() === 'en' ? 'palace-head-en' : 'palace-head'} ${styles["palace-minor"]}`}>
           {props.palace.minorStars?.map((star, index) => (
             <Star star={star} key={index} />
           ))}
         </div>
-        <div className={styles["palace-adj"]}>
+        <div className={`${getLang() === 'en' ? 'palace-head-en' : 'palace-head'} ${styles["palace-adj"]}`}>
           {props.palace.adjectiveStars?.map((star, index) => (
             <Star star={star} key={index} />
           ))}
