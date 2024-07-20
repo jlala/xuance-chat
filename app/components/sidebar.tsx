@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useRef, useMemo } from "react";
 
 import styles from "./home.module.scss";
@@ -30,6 +31,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { isIOS, useMobileScreen } from "../utils";
 import dynamic from "next/dynamic";
 import { showConfirm, showToast } from "./ui-lib";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
 
 const ChatList = dynamic(async () => (await import("./chat-list")).ChatList, {
   loading: () => null,
@@ -130,7 +132,7 @@ function useDragSideBar() {
 
 export function SideBar(props: { className?: string }) {
   const chatStore = useChatStore();
-
+  const { user, isSignedIn } = useUser();
   // drag side bar
   const { onDragStart, shouldNarrow } = useDragSideBar();
   const navigate = useNavigate();
@@ -160,9 +162,19 @@ export function SideBar(props: { className?: string }) {
         <div className={styles["sidebar-sub-title"]}>
           你的心灵治疗室
         </div>
-        {/* <div className={styles["sidebar-logo"] + " no-dark"}>
-          <ChatGptIcon />
-        </div> */}
+        <div className={styles["sidebar-logo"] + " no-dark"}>
+          { isSignedIn ? 
+            <div>
+              <UserButton />
+            </div>
+          : <SignInButton>
+              <IconButton
+                text={"登录"}
+                shadow
+              />
+            </SignInButton> 
+          }
+        </div>
       </div>
 
       <div className={styles["sidebar-header-bar"]}>
